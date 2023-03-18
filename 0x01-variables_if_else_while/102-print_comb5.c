@@ -8,9 +8,9 @@
 int main(void)
 {
 	int x = 0;
-	int y;
 	int a;
 	int b;
+	int y;
 	int c;
 	int d;
 
@@ -18,7 +18,7 @@ int main(void)
 	{
 		a = (x / 10 + '0');
 		b = (x % 10 + '0');
-		y = '0';
+		y = 1;
 		while (y <= 99)
 		{
 			c = (y / 10 + '0');
