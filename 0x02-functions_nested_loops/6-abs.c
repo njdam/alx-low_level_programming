@@ -5,7 +5,7 @@
  * if: as our function for comparison
  * _putchar: as our function to prints
  *
- * Return: to an intiger x for success.
+ * Return: to an intiger x for success to end program.
  */
 int _abs(int x)
 {
