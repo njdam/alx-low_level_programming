@@ -4,7 +4,7 @@
  * @a: as our first integer
  * @b: as our second integer
  *
- * Return: to always result.
+ * Return: alyways to result to stop a program.
  */
 int add(int a, int b)
 {
