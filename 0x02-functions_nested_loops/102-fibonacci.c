@@ -7,15 +7,23 @@
  */
 int main(void)
 {
-	int a = 1;
-	int b = 2;
-	int c, x;
+	long a = 1;
+	long b = 2;
+	long c;
+	int x;
 
-	printf("%d, %d, ", a, b);
+	printf("%ld, %ld, ", a, b);
 	for (x = 3; x <= 50; x++)
 	{
-		c = a + b;
-		printf("%d, ", c);
+		c = (a + b);
+		if (x < 50)
+		{
+			printf("%ld, ", c);
+		}
+		else
+		{
+			printf("%ld", c);
+		}
 		a = b;
 		b = c;
 	}
