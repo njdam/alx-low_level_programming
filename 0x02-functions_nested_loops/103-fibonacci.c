@@ -13,12 +13,12 @@ int main(void)
 
 	while (b <= 4000000)
 	{
-		b += a;
-		a = b -a;
 		if ((b % 2) == 0)
 		{
 			x = b + x;
 		}
+		b += a;
+		a = b - a;
 	}
 	b++;
 
