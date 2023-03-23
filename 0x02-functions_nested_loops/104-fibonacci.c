@@ -25,7 +25,7 @@ int main(void)
 	y = (b / d);
 	z = (b % d);
 
-	for (v = 92; v <= 98; v++)
+	for (v = 92; v < 99; v++)
 	{
 		y = w + y;
 		w = y - w;
@@ -35,7 +35,7 @@ int main(void)
 		if (v == 98)
 		{
 			printf("%lu", (y + (z / d)));
-			printf("%lu \n", (z % d));
+			printf("%lu", (z % d));
 		}
 		else
 		{
@@ -43,6 +43,7 @@ int main(void)
 			printf("%lu, ", (z % d));
 		}
 	}
+	printf("\n");
 
 	return (0);
 }
