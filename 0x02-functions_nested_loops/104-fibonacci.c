@@ -35,7 +35,7 @@ int main(void)
 		if (v == 98)
 		{
 			printf("%lu", (y + (z / d)));
-			printf("%lu\n", (z % d));
+			printf("%lu \n", (z % d));
 		}
 		else
 		{
