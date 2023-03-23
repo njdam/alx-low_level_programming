@@ -10,7 +10,7 @@ int main(void)
 	int v;
 	unsigned long int a = 1, w, x;
 	unsigned long int b = 2, y, z;
-	unsigned long int d = 1000000000;
+	unsigned long int d = 1000000;
 
 	printf("%lu, %lu", a, b);
 	for (v = 3; v < 92; v++)
