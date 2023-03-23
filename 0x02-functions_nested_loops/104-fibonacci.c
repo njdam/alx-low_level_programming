@@ -7,22 +7,40 @@
  */
 int main(void)
 {
-	int x;
-	unsigned long a = 1;
-	unsigned long b = 2;
+	int v;
+	unsigned long a = 1, w, x;
+	unsigned long b = 2, y, z;
+	unsigned long d = 1000000;
 
 	printf("%lu, %lu, ", a, b);
-	for (x = 3; x <= 98; x++)
+	for (v = 3; v < 92; v++)
 	{
 		b += a;
 		a = b - a;
-		if (x < 98)
+		printf("%lu, ", b);
+	}
+
+	w = (a / d);
+	x = (a % d);
+	y = (b / d);
+	z = (b % d);
+
+	for (v = 92; v <= 98; v++)
+	{
+		y = w + y;
+		w = y - w;
+		z = x + z;
+		x = z - x;
+
+		if (v == 98)
 		{
-			printf("%lu, ", b);
+			printf("%lu", (y + (z / d)));
+			printf("%lu\n", (z % d));
 		}
 		else
 		{
-			printf("%lu\n", b);
+			printf("%lu", (y + (z / d)));
+			printf("%lu, ", (z % d));
 		}
 	}
 
