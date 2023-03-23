@@ -12,19 +12,12 @@ int main(void)
 	unsigned long b = 2, y, z;
 	unsigned long d = 1000000;
 
-	printf("%lu, ", a);
-	for (v = 2; v < 92; v++)
+	printf("%lu, %lu, ", a, b);
+	for (v = 3; v < 92; v++)
 	{
-		if (v == 2)
-		{
-			printf("%lu, ", b);
-		}
-		else
-		{
-			b += a;
-			a = b - a;
-			printf("%lu, ", b);
-		}
+		b += a;
+		a = b - a;
+		printf("%lu, ", b);
 	}
 	w = (a / d);
 	x = (a % d);
