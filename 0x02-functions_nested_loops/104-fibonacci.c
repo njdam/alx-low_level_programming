@@ -8,17 +8,18 @@
 int main(void)
 {
 	int v;
-	unsigned long a = 1, w, x;
-	unsigned long b = 2, y, z;
-	unsigned long d = 1000000;
+	unsigned long int a = 1, w, x;
+	unsigned long int b = 2, y, z;
+	unsigned long int d = 1000000000;
 
-	printf("%lu, %lu, ", a, b);
+	printf("%lu, %lu", a, b);
 	for (v = 3; v < 92; v++)
 	{
 		b += a;
 		a = b - a;
-		printf("%lu, ", b);
+		printf(", %lu", b);
 	}
+
 	w = (a / d);
 	x = (a % d);
 	y = (b / d);
@@ -29,17 +30,10 @@ int main(void)
 		w = y - w;
 		z = x + z;
 		x = z - x;
-		if (v == 98)
-		{
-			printf("%lu", (y + (z / d)));
-			printf("%lu", (z % d));
-		}
-		else
-		{
-			printf("%lu", (y + (z / d)));
-			printf("%lu, ", (z % d));
-		}
+		printf(", %lu", (y + (z / d)));
+		printf("%lu", (z % d));
 	}
-	printf(" \n");
+	printf("\n");
+
 	return (0);
 }
