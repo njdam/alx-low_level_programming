@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
 
 /**
  * main - as our function to find largest prime factor
@@ -10,12 +9,10 @@
  */
 int main(void)
 {
-	int* ptr;
-	int n = 612852475143;
-	int x;
-	int y; /* Largest prime number of n. */
+	long int n = 612852475143;
+	long int x;
+	long int y = -1; /* Largest prime number of n. */
 
-	ptr = (int*)malloc(n * sizeof(int));
 	while (n % 2 == 0)
 	{
 		y = 2;
@@ -33,6 +30,7 @@ int main(void)
 	{
 		y = n;
 	}
+	printf("%ld\n", y);
 
 	return (y);
 }
