@@ -8,12 +8,12 @@
 int main(void)
 {
 	int v;
-	unsigned long a = 1, w, x;
-	unsigned long b = 2, y, z;
-	unsigned long d = 1000000;
+	unsigned long int a = 1, w, x;
+	unsigned long int b = 2, y, z;
+	unsigned long int d = 1000000;
 
 	printf("%lu, %lu", a, b);
-	for (v = 3; v < 92; v++)
+	for (v = 3; v < 91; v++)
 	{
 		b += a;
 		a = b - a;
@@ -25,7 +25,7 @@ int main(void)
 	y = (b / d);
 	z = (b % d);
 
-	for (v = 92; v < 99; v++)
+	for (v = 91; v < 99; v++)
 	{
 		y = w + y;
 		w = y - w;
