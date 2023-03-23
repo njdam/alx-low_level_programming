@@ -8,9 +8,9 @@
 int main(void)
 {
 	int v;
-	unsigned long int a = 1, w, x;
-	unsigned long int b = 2, y, z;
-	unsigned long int d = 1000000;
+	long unsigned int a = 1, w, x;
+	long unsigned int b = 2, y, z;
+	long unsigned int d = 1000000000;
 
 	printf("%lu, %lu", a, b);
 	for (v = 3; v < 92; v++)
