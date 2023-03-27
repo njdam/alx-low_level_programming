@@ -2,7 +2,7 @@
 
 /**
  * puts_half - a functions that prints half of string
- * _putchar: our function to print string
+ * _putchar: our function to print half of string
  * @str: our string to be printed
  *
  * Return: type is void.
