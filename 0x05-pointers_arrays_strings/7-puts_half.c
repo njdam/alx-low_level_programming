@@ -16,11 +16,11 @@ void puts_half(char *str)
 	{
 		r++;
 	}
-	y = (r/2);
+	y = (r / 2);
 
 	if ((r % 2) != 0)
 	{
-	y = ((r + 1)/ 2);
+	y = ((r + 1) / 2);
 	}
 
 	for (x = y; str[x] != '\0'; x++)
