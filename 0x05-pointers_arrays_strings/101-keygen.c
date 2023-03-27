@@ -20,13 +20,13 @@ int main(void)
 	for (pb = 0; pb < 100; pb++)
 	{
 		pswd[pb] = rand() % 78;
-		pa += (pswd[pb] + '0');
-		putchar(pswd[pb] + '0');
-		if (((2772 - pa) - '0') < 78)
+		pa += (pswd[pb] + 48);
+		putchar(pswd[pb] + 48);
+		if (((2772 - pa) - 48) < 78)
 		{
-			pc = 2772 - pa - '0';
+			pc = 2772 - pa - 48;
 			pa += pc;
-			putchar(pc + '0');
+			putchar(pc + 48);
 			break;
 		}
 	}
