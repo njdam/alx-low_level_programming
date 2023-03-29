@@ -10,24 +10,15 @@
 int _strcmp(char *s1, char *s2)
 {
 	int x;
-	int ls1 = 0;
-	int ls2 = 0;
-	int res;
 
-	for (x = 0; s1[x] != '\0'; x++)
-		ls1++;
-	for (x = 0; s2[x] != '\0'; x++)
-		ls2++;
-	if (ls1 == ls2)
-		return (0);
-	else if (ls1 > ls2)
+	for (x = 0; s1[x] != '\0' || s2[x] != '\0'; x++)
 	{
-		res = ((ls1 - ls2) * 10 + ls2);
-		return (res);
+		if (s1[x] != s2[x])
+		{
+			return (s1[x] - s2[x]);
+		}
+		else
+			return (0);
 	}
-	else
-	{
-		res = -((ls2 - ls1) * 10 + ls1);
-		return (res);
-	}
+	return (0);
 }
