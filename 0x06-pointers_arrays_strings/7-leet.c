@@ -19,8 +19,6 @@ char *leet(char *mus)
 		{
 			if (mus[w] == y[x])
 				mus[w] = z[x];
-			else
-				mus[w] = mus[w];
 		}
 	}
 	return (mus);
