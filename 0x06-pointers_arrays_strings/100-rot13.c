@@ -9,16 +9,17 @@
 char *rot13(char *str)
 {
 	int x, y;
-	char *rotA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *rotB = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char rotA[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rotB[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	for (x = 0; str[x]; x++)
+	for (x = 0; str[x] != '\0'; x++)
 	{
-		for (y = 0; rotA[y]; y++)
+		for (y = 0; rotA[y] != '\0'; y++)
 		{
 			if (str[x] == rotA[y])
 			{
 				str[x] = rotB[y];
+				break;
 			}
 		}
 	}
