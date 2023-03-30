@@ -8,16 +8,15 @@
  */
 char *cap_string(char *str)
 {
-	int x;
+	int x = 0;
 
-	x = 0;
 	while (str[x])
 	{
-		while (!(str[x] >= 'a' && str[x] >= 'z'))
+		while (!(str[x] >= 'a' && str[x] <= 'z'))
 		{
 			x++;
 		}
-		if (str[x] == str[0] ||
+		if (x == 0 ||
 				str[x - 1] == 32 ||
 				str[x - 1] == '\t' ||
 				str[x - 1] == '\n' ||
