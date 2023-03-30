@@ -11,17 +11,17 @@ char *cap_string(char *str)
 	int x;
 
 	for (x = 0; str[x]; x++)
-	/* while (str[x]) */
 	{
 		for (; !(str[x] >= 'a' && str[x] <= 'z'); )
-		/* while (!(str[x] >= 'a' && str[x] <= 'z')) */
+		/* for starting"!" character"a-z" on index "x" of each word in string"str". */
 		{
 			x++;
 		}
 		if (x == 0 ||
 				str[x - 1] == 32 ||
-				str[x - 1] == '\t' ||
-				str[x - 1] == '\n' ||
+				str[x - 1] == 9 ||
+				str[x - 1] == 11 ||
+				str[x - 1] == 10 ||
 				str[x - 1] == 44 ||
 				str[x - 1] == 59 ||
 				str[x - 1] == 46 ||
@@ -35,7 +35,6 @@ char *cap_string(char *str)
 		{
 			str[x] -= 32;
 		}
-		/* x++; */
 	}
 	return (str);
 }
