@@ -25,8 +25,8 @@ void print_buffer(char *b, int size)
 			else
 				printf(" ");
 
-			if (z % 2)
-				printf(" ");
+			/* if (z % 2)
+				printf(" "); */
 		}
 		for (z = 0; z < y; z++)
 		{
