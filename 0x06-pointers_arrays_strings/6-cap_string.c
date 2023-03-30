@@ -13,14 +13,14 @@ char *cap_string(char *str)
 	for (x = 0; str[x]; x++)
 	{
 		for (; !(str[x] >= 'a' && str[x] <= 'z'); )
-		/* for starting"!" character"a-z" on index "x" of each word in string"str". */
+		/* for starting"!" character"a-z" at
+		 * index "x" of each word in string"str". */
 		{
 			x++;
 		}
 		if (x == 0 ||
 				str[x - 1] == 32 ||
 				str[x - 1] == 9 ||
-				str[x - 1] == 11 ||
 				str[x - 1] == 10 ||
 				str[x - 1] == 44 ||
 				str[x - 1] == 59 ||
