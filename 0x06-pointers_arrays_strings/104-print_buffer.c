@@ -12,8 +12,11 @@ void print_buffer(char *b, int size)
 	int x, y, z, t;
 
 	if (size <= 0)
+	{
 		printf("\n");
-	for (x = 0; x < size; x += 10)
+		return;
+	}
+	for (x = 0; x < size;)
 	{
 		y = (size - x) < 10 ? (size - x) : 10;
 		printf("%08x: ", x);
@@ -25,16 +28,17 @@ void print_buffer(char *b, int size)
 			else
 				printf(" ");
 
-			/* if (z % 2)
-				printf(" "); */
+			if (z % 2)
+				printf(" ");
 		}
 		for (z = 0; z < y; z++)
 		{
 			t = *(b + x + z);
 			if (t < 32 || t > 132)
-				t = '.';
+				t = 46;
 			printf("%c", t);
 		}
 		printf("\n");
+		x += 10;
 	}
 }
