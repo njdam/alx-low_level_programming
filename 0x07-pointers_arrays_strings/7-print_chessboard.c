@@ -2,7 +2,7 @@
 
 /**
  * print_chessboard - a function that print a chess board;
- * @a: our array to array 
+ * @a: our array to array
  * _putchar: used to prints;
  *
  * Return: type is void.
@@ -22,5 +22,5 @@ void print_chessboard(char (*a)[8])
 		}
 		_putchar('\n');
 		x++;
-	}	
+	}
 }
