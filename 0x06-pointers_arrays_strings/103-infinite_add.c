@@ -18,21 +18,18 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	x = 0;
 	while (n1[x])
 		x++;
-
 	y = 0;
 	while (n2[y])
 		y++;
-
 	if (x > size_r || y > size_r)
 		return (0);
-
 	x = x - 1;
 	y = y - 1;
 	z = 0;
 	while (z < size_r - 1)
 	{
 		num = res;
-		if ( x < 0 && y < 0 && num == 0)
+		if (x < 0 && y < 0 && num == 0)
 			break;
 		else if (x >= 0)
 			num = num + (n1[x] - 48);
@@ -42,7 +39,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[z] = ((num % 10) + 48);
 		z++;
 	}
-
 	z = z - 1;
 	w = 0;
 	while (w < z)
@@ -52,6 +48,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[w] = res;
 		w++;
 	}
-
 	return (r);
 }
