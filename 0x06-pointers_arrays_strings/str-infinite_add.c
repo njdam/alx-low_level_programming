@@ -1,4 +1,24 @@
 #include "main.h"
+#include <stdio.h>
+
+/**
+ * main - function to start a program;
+ * printf: to prints;
+ *
+ * Return: to value 0 to stop a program.
+ */
+int main(void)
+{
+	char *n1 = "9999";
+	char *n2 = "1";
+	char r[10];
+	char *res;
+
+	res = infinite_add(n1, n2, r, 10);
+	printf("%s + %s = %s\n", n1, n2, res);
+
+	return (0);
+}
 
 /**
  * *infinite_add - a function that adds two numbers;
@@ -21,7 +41,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n2ln = 0; /* finding of length of String n2 */
 	while (n2[n2ln] != '\0')
 		n2ln++;
-	if (n1ln >= n2ln && n1ln < (size_r - 1))
+	if (n1ln > n2ln)
 	{
 		for (x = n1ln - 1; x >= 0; x--)
 		{
@@ -33,10 +53,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			res = res / 10;
 			/* buffer size decrementation to next */
 			size_r--;
-			break;
 		}
 	}
-	else if (n1ln < n2ln && n2ln < (size_r - 1))
+	if (n1ln < n2ln)
 	{
 		for (x = n2ln - 1; x >= 0; x--)
 		{
@@ -48,10 +67,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			res = res / 10;
 			/* buffer size decrementation to next */
 			size_r--;
-			break;
 		}
 	}
-	else
-		return (0);
 	return (r);
 }
