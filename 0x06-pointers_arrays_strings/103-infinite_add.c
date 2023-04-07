@@ -31,7 +31,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			r[size_r] = ((res % 10) + '0');
 			/* this will be added to the next res */
 			res = res / 10;
-			/* buffer size decrementation to next */
 			size_r--;
 			n2ln--;
 			break;
@@ -41,13 +40,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	{
 		for (x = n2ln - 1; x >= 0; x--)
 		{
-			/* conversion of strings to numbers */
 			res = (n1[n1ln - 1] - '0') + (n2[x] - '0') + res;
-			/* store the remender in buffer */
 			r[size_r] = ((res % 10) + '0');
-			/* this will be added to the next res */
 			res = res / 10;
-			/* buffer size decrementation to next */
 			size_r--;
 			n1ln--;
 			break;
