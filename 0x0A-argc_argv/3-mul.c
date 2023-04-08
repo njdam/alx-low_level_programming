@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 /**
- * main - functions to prints multiplied arguments;
+ * main - functions to prints multiplied two arguments;
  * @argc: array size and equal to the number of program command line arguments;
  * @argv: is array that store all program command line arguments;
- * printf: to prints result of multiplied arguments;
+ * printf: to prints result of multiplied two arguments;
  *
- * Return: to always value 1 if it is successful.
+ * Return: to always value 0 if mul is printed otherwise value 1.
  */
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,10 @@ int main(int argc, char *argv[])
 	}
 
 	else
+	{
 		printf("Error\n");
+		return (1);
+	}
 
-	return (1);
+	return (0);
 }
