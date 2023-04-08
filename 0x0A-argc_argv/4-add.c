@@ -7,7 +7,7 @@
  * @argv: is array that store program command line arguments;
  * printf: to prints addition of arguments positive numbers;
  *
- * Return: to value 0 if is successful otherwise 1.
+ * Return: to stop by a value 0 if is successful otherwise 1.
  */
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			y = 0;
 			while (argv[x][y] != 0)
 			{
-				if (argv[x][y] < '0' || argv[x][y] > '9')
+				if (argv[x][y] < 48 || argv[x][y] > 57)
 				{
 					printf("Error\n");
 					return (1);
