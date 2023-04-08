@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	int x;
 	unsigned int mul = 1;
 
-	if (argc > 1)
+	if (argc == 3)
 	{
 		for (x = 1; x < argc; x++)
 		{
