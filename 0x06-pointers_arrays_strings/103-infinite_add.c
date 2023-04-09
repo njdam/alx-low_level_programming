@@ -11,44 +11,50 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int n1ln, n2ln, x;
+	int n1ln, n2ln, x, y;
 	int res = 0;
 
-	n1ln = 0; /* finding of length of String n1 */
-	while (n1[n1ln] != '\0')
+	/* finding of length of String n1 */
+	n1ln = 0;
+	while (n1[n1ln])
 		n1ln++;
 
-	n2ln = 0; /* finding of length of String n2 */
-	while (n2[n2ln] != '\0')
+	/* finding of length of String n2 */
+	n2ln = 0;
+	while (n2[n2ln])
 		n2ln++;
-	if (n1ln >= n2ln && n1ln < (size_r - 1) && n2ln > 0)
-	{
-		for (x = n1ln - 1; x >= 0; x--)
-		{
-			/* conversion of strings to numbers */
-			res = (n1[x] - '0') + (n2[n2ln - 1] - '0') + res;
-			/* store the remender in buffer */
-			r[size_r] = ((res % 10) + '0');
-			/* this will be added to the next res */
-			res = res / 10;
-			size_r--;
-			n2ln--;
-			break;
-		}
-	}
-	else if (n1ln < n2ln && n2ln < (size_r - 1) && n1ln > 0)
-	{
-		for (x = n2ln - 1; x >= 0; x--)
-		{
-			res = (n1[n1ln - 1] - '0') + (n2[x] - '0') + res;
-			r[size_r] = ((res % 10) + '0');
-			res = res / 10;
-			size_r--;
-			n1ln--;
-			break;
-		}
-	}
-	else
+
+	if (n1ln > size_r || n2ln > size_r)
 		return (0);
+
+	for (n1ln -= 1, n2ln -= 1, x = 0; x < size_r - 1; n1ln--, n2ln--, x++)
+	{
+		/* conversion of strings to numbers */
+		if (n1ln >= 0)
+			res += (n1[n1ln] - 48);
+		if (n2ln >= 0)
+			res += (n2[n2ln] - 48);
+		/* If for not to store Empty(n1||n2) in buffer*/
+		if (n1ln < 0 && n2ln < 0 && res == 0)
+			break;
+		/* store the remender in buffer */
+		r[x] = ((res % 10) + 48);
+		res = res / 10;
+	}
+
+	r[x] = '\0';
+	if (n1ln >= 0 || n2ln >= 0 || res)
+		return (0);
+	x -= 1;
+	y = 0;
+	while (y < x)
+	{
+		res = r[x];
+		r[x] = r[y];
+		r[y] = res;
+		x--;
+		y++;
+	}
+
 	return (r);
 }
