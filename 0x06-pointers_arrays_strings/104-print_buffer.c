@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * print_buffer - a function that prints a buffer;
@@ -9,35 +10,58 @@
  */
 void print_buffer(char *b, int size)
 {
-	int x, y, z, t;
+	int ln;
 
 	if (size <= 0)
-	{
 		printf("\n");
-	}
-	for (x = 0; x < size;)
-	{
-		y = (size - x) < 10 ? (size - x) : 10;
-		printf("%08x: ", x);
 
-		for (z = 0; z < 10; z++)
+	if (size % 10 == 0)
+		for (ln = 0; ln < (size / 10); ln++)
 		{
-			if (z < y)
-				printf("%02x", *(b + x + z));
+			printf("%08x: ", (ln * 10));
+			fill_line(b, ln, size);
+		}
+
+	else
+		for (ln = 0; ln < (size / 10) + 1; ln++)
+		{
+			printf("%08x: ", (ln * 10));
+			fill_line(b, ln, size);
+		}
+}
+
+/**
+ * fill_line - a function to fill the line with hexadecimal of string;
+ * @bf: is buffer with strings to be used;
+ * @y: is integer for line as y-axis;
+ * @sz: is size of buffer with strings;
+ *
+ * Return: type is void.
+ */
+void fill_line(char *bf, int y, int sz)
+{
+	int x;
+
+	for (x = 0; x < 10; x++)
+	{
+		if ((y * 10 + x) < sz)
+			printf("%02x", bf[y * 10 + x]);
+		else
+			printf("  ");
+
+		if (x % 2)
+			putchar(32);
+	}
+
+	for (x = 0; x < 10; x++)
+	{
+		if ((y * 10 + x) < sz)
+		{
+			if (bf[y * 10 + x] >= 32 && bf[y * 10 + x] < 127)
+				printf("%c", bf[y * 10 + x]);
 			else
-				printf(" ");
-
-			if (z % 2)
-				printf(" ");
+				putchar(46);
 		}
-		for (z = 0; z < y; z++)
-		{
-			t = *(b + x + z);
-			if (t < 32 || t > 132)
-				t = 46;
-			printf("%c", t);
-		}
-		printf("\n");
-		x += 10;
 	}
+	putchar(10);
 }
