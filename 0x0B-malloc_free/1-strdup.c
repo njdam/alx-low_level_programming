@@ -11,13 +11,13 @@ char *_strdup(char *str)
 	unsigned long int x;
 	char *y;
 
-	y = malloc(sizeof(str) * sizeof(*y));
+	y = malloc(sizeof(str) + 1);
 
-	if (str == NULL || sizeof(str) > sizeof(y))
+	if (str == NULL || y == NULL)
 		return (NULL);
 
 	x = 0;
-	while (x < sizeof(str))
+	while (str[x] != '\0')
 	{
 		y[x] = str[x];
 		x++;
