@@ -9,19 +9,20 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **da, x, y;
+	int **da;
+	int x, y;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
-	da = (int **)malloc(height * sizeof(int));
+	da = malloc(height * sizeof(int*));
 	if (da == NULL)
 		return (NULL);
 
 	y = 0;
 	while (y < height)
 	{
-		da[y] = (int *)malloc(width * sizeof(int));
+		da[y] = malloc(width * sizeof(int));
 		if (da[y] == NULL)
 		{
 			free(da);
