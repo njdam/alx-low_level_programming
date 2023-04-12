@@ -33,6 +33,7 @@ char **strtow(char *str)
 				m = malloc((i + 1) * sizeof(char));
 				if (m == NULL)
 					return (NULL);
+
 				while (a < z)
 					*m++ = str[a++];
 				*m = '\0';
@@ -62,16 +63,16 @@ int stwct(char *st)
 	d = 0;
 	l = 0;
 	n = 0;
-        while (st[n] != '\0')
-        {
-                if (st[n] == ' ')
-                        d = 0;
+	while (st[n] != '\0')
+	{
+		if (st[n] == ' ')
+			d = 0;
 		else if (d == 0)
 		{
 			d = 1;
 			l++;
 		}
-                n++;
-        }
-        return (l);
+		n++;
+	}
+	return (l);
 }
