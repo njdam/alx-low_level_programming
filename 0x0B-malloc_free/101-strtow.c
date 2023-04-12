@@ -67,7 +67,7 @@ int stwct(char *st)
 	{
 		if (st[n] == ' ')
 			d = 0;
-		if (d == 0)
+		else if (d == 0)
 		{
 			d = 1;
 			l++;
