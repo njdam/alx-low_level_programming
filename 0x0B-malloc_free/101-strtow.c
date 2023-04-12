@@ -14,6 +14,7 @@ char **strtow(char *str)
 	ln = 0;
 	while (str[ln])
 		ln++;
+
 	y = stwct(str);
 	if (y == 0)
 		return (NULL);
@@ -21,9 +22,11 @@ char **strtow(char *str)
 	w = malloc((y + 1) * sizeof(char *));
 	if (w == NULL)
 		return (NULL);
+
 	i = 0;
 	j = 0;
-	for (x = 0; x <= ln; x++)
+	x = 0;
+	while (x < (ln + 1))
 	{
 		if (str[x] == ' ' || str[x] == '\0')
 		{
@@ -44,6 +47,7 @@ char **strtow(char *str)
 		}
 		else if (i++ == 0)
 			a = x;
+		x++;
 	}
 	w[j] = NULL;
 
@@ -51,10 +55,10 @@ char **strtow(char *str)
 }
 
 /**
- * stwct - my function to count the number of character in a word;
- * @st: our string with words to be used;
+ * stwct - my function to count the number of words in a string;
+ * @st: our string to be used;
  *
- * Return: the resulting number of characters in a word.
+ * Return: the resulting number of words in a string.
  */
 int stwct(char *st)
 {
@@ -67,7 +71,7 @@ int stwct(char *st)
 	{
 		if (st[n] == ' ')
 			d = 0;
-		else if (d == 0)
+		if (d == 0)
 		{
 			d = 1;
 			l++;
