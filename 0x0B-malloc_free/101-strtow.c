@@ -14,7 +14,6 @@ char **strtow(char *str)
 	ln = 0;
 	while (str[ln])
 		ln++;
-
 	y = stwct(str);
 	if (y == 0)
 		return (NULL);
@@ -22,7 +21,6 @@ char **strtow(char *str)
 	w = malloc((y + 1) * sizeof(char *));
 	if (w == NULL)
 		return (NULL);
-
 	i = 0;
 	j = 0;
 	x = 0;
@@ -36,7 +34,6 @@ char **strtow(char *str)
 				m = malloc((i + 1) * sizeof(char));
 				if (m == NULL)
 					return (NULL);
-
 				while (a < z)
 					*m++ = str[a++];
 				*m = '\0';
@@ -50,7 +47,6 @@ char **strtow(char *str)
 		x++;
 	}
 	w[j] = NULL;
-
 	return (w);
 }
 
