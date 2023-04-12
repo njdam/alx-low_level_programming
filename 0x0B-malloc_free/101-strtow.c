@@ -24,7 +24,7 @@ char **strtow(char *str)
 	i = 0;
 	j = 0;
 	x = 0;
-	while (x < (ln + 1))
+	while (x <= ln)
 	{
 		if (str[x] == ' ' || str[x] == '\0')
 		{
