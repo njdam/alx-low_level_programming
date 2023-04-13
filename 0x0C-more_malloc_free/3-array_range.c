@@ -2,8 +2,8 @@
 
 /**
  * array_range - function to creates an array of integers;
- * @min: is minimum value;
- * @max: is maximimum value;
+ * @min: is minimum value of an integer;
+ * @max: is maximimum value of an integer;
  *
  * Return: pointer of newly created array of ordered integers otherwise "NULL".
  */
