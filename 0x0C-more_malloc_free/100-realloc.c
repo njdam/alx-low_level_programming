@@ -18,6 +18,9 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 
+	if (new_size == old_size)
+		return (ptr);
+
 	new_ptr = malloc(new_size);
 	if (new_ptr == NULL)
 		return (NULL);
@@ -25,10 +28,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (ptr == NULL)
 		return (new_ptr);
 
-	if (new_size == old_size)
-		return (ptr);
+	if (new_size < old_size)
+		cpcont(ptr, new_ptr, new_size);
+	else
+		cpcont(ptr, new_ptr, old_size);
 
-	cpcont(ptr, new_ptr, new_size);
 	free(ptr);
 
 	return (new_ptr);
@@ -38,15 +42,15 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  * cpcont - my function to copy content of ptr to new_ptr;
  * @ptr: a pointer to previously allocated memory;
  * @new_ptr: a pointer to new allocated memory;
- * @new_size: is bytes of new allocated memory;
+ * @n_size: is bytes to be copied to new allocated memory;
  *
  * Return: resulting pointer to new allocated memory.
  */
-char *cpcont(char *ptr, char *new_ptr, unsigned int new_size)
+char *cpcont(char *ptr, char *new_ptr, unsigned int n_size)
 {
 	unsigned int x = 0;
 
-	while (x < new_size)
+	while (x < n_size)
 	{
 		new_ptr[x] = ptr[x];
 		x++;

@@ -10,6 +10,6 @@ void *_calloc(unsigned int nmemb, unsigned int size);
 char *setmem0(char *arr, unsigned int n);
 int *array_range(int min, int max);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *cpcont(char *ptr, char *new_ptr, unsigned int new_size);
+char *cpcont(char *ptr, char *new_ptr, unsigned int n_size);
 
 #endif /* MAIN_H */
