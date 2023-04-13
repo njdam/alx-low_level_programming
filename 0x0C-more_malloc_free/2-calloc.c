@@ -10,15 +10,17 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *arr;
+	unsigned int n;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	arr = malloc(nmemb * size);
+	n = nmemb * size;
+	arr = malloc(n);
 	if (arr == NULL)
 		return (NULL);
 
-	setmem0(arr, (nmemb * size));
+	setmem0(arr, n);
 
 	return (arr);
 }
@@ -26,7 +28,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 /**
  * setmem0 - my function to set allocated memory to zero;
  * @arr: is an array to be used;
- * @n: number of elements to be set.
+ * @n: number of bytes to be set;
  *
  * Return: pointed array.
  */
