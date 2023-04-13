@@ -18,5 +18,29 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (arr == NULL)
 		return (NULL);
 
+	setmem0(arr, nmemb);
+
+	return (arr);
+}
+
+/**
+ * setmem0 - my function to set allocated memory to zero;
+ * @arr: is an array to be used;
+ * @n: number of elements to be set.
+ *
+ * Return: pointed array.
+ */
+char *setmem0(char *arr, unsigned int n)
+{
+	unsigned int x;
+	char y = 0;
+
+	x = 0;
+	while (x < n)
+	{
+		arr[x] = y;
+		x++;
+	}
+
 	return (arr);
 }
