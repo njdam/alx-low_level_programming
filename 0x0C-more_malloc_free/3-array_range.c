@@ -2,10 +2,10 @@
 
 /**
  * array_range - function to creates an array of integers;
- * @min: is minimum values;
- * @max: is maximimum values;
+ * @min: is minimum value;
+ * @max: is maximimum value;
  *
- * Return: to pointer of newly created array otherwise NULL.
+ * Return: pointer of newly created array of ordered integers otherwise "NULL".
  */
 int *array_range(int min, int max)
 {
