@@ -22,11 +22,11 @@ int main(int argc, char *argv[])
 
 	ln1 = strln(str1), ln2 = strln(str2);
 	fln = ln1 + ln2;
-	mul = malloc((fln + 1) * sizeof(int));
+	mul = malloc(fln * sizeof(int));
 	if (mul == NULL)
 		return (1);
 	x = 0;
-	while (x <= fln)
+	while (x < fln)
 	{
 		mul[x] = 0;
 		x++;
@@ -61,13 +61,13 @@ int isitdigit(char *str)
 	int x;
 
 	x = 0;
-	while (str[x] > 47 && str[x] < 58)
+	while (str[x] < 48 && str[x] > 57)
 	{
-		return (1);
+		return (0);
 		x++;
 	}
 
-	return (0);
+	return (1);
 }
 
 /**
