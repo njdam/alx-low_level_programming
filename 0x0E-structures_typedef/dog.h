@@ -6,6 +6,8 @@
  * @name: our First member;
  * @float: our Second member;
  * @owner:  our Third member;
+ *
+ * Description: a "struct dog" that changed struct dog "my_dog".
  */
 typedef struct dog
 {
