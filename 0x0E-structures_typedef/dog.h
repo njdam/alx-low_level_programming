@@ -9,15 +9,15 @@
  *
  * Description: a "struct dog" that changed struct dog "my_dog".
  */
-typedef struct dog
+struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-}
+};
 /**
  * my_dog - typedef for new dog struct dog;
  */
-my_dog;
+typedef struct dog my_dog;
 
 #endif /* DOG_H */
