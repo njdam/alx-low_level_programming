@@ -1,6 +1,9 @@
 #ifndef DOG_H
 #define DOG_H
 
+#include <stdlib.h>
+#include <stdio.h>
+
 /**
  * struct dog - function containing dog information;
  * @name: our First member;
@@ -17,5 +20,6 @@ typedef struct dog
 }
  /* my_dog - typedef for new dog struct dog; */
 my_dog;
+void init_dog(struct dog *d, char *name, float age, char *owner);
 
 #endif /* DOG_H */
