@@ -4,10 +4,10 @@
 /**
  * struct dog - function containing dog information;
  * @name: our First member;
- * @float: our Second member;
+ * @age: our Second member;
  * @owner:  our Third member;
  *
- * Description: a "struct dog" that changed struct dog "dog_t".
+ * Description: a "struct dog" that changed struct dog "my_dog".
  */
 struct dog
 {
@@ -16,8 +16,8 @@ struct dog
 	char *owner;
 };
 /**
- * dog_t - typedef for new dog struct dog;
+ * my_dog - typedef for new dog struct dog;
  */
-typedef struct dog dog_t;
+typedef struct dog my_dog;
 
 #endif /* DOG_H */
