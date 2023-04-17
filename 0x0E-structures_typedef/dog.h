@@ -7,7 +7,7 @@
  * @float: our Second member;
  * @owner:  our Third member;
  *
- * Description: a "struct dog" that changed struct dog "my_dog".
+ * Description: a "struct dog" that changed struct dog "dog_t".
  */
 struct dog
 {
@@ -16,8 +16,8 @@ struct dog
 	char *owner;
 };
 /**
- * my_dog - typedef for new dog struct dog;
+ * dog_t - typedef for new dog struct dog;
  */
-typedef struct dog my_dog;
+typedef struct dog dog_t;
 
 #endif /* DOG_H */
