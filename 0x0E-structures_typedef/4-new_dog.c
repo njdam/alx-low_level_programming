@@ -1,5 +1,4 @@
 #include "dog.h"
-#include <string.h>
 
 /**
  * new_dog - a function to create new dog;
@@ -18,8 +17,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (my_dog == NULL)
 		return (NULL);
 
-	nln = strlen(name);
-	oln = strlen(owner);
+	nln = strln(name);
+	oln = strln(owner);
 
 	my_dog->name = malloc((nln + 1) * sizeof(char));
 	if (my_dog->name == NULL)
@@ -27,6 +26,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(my_dog);
 		return (NULL);
 	}
+	cpstr(my_dog->name, name);
 
 	my_dog->age = age;
 
@@ -36,9 +36,46 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(my_dog);
 		return (NULL);
 	}
-
-	strcpy(my_dog->name, name);
-	strcpy(my_dog->owner, owner);
+	cpstr(my_dog->owner, owner);
 
 	return (my_dog);
+}
+
+/**
+ * strln - function to return length of string;
+ * @str: is string to be used;
+ *
+ * Return: resulting length of string.
+ */
+int strln(char *str)
+{
+	int ln;
+
+	ln = 0;
+	while (str[ln] != '\0')
+		ln++;
+
+	return (ln);
+}
+
+/**
+ * cpstr - my fuction to copy string to dest;
+ * @src: is source of string to be copied;
+ * @dest: is where string is to be copied to;
+ *
+ * Return: resulting string in dest.
+ */
+char *cpstr(char *dest, char *src)
+{
+	int x;
+
+	x = 0;
+	while (src[x] != '\0')
+	{
+		dest[x] = src[x];
+		x++;
+	}
+	dest[x] = '\0';
+
+	return (dest);
 }
