@@ -1,6 +1,7 @@
 #include "dog.h"
 
-/* free_dog - a function to free allocated "dogs" memory;
+/**
+ * free_dog - a function to free allocated "dogs" memory;
  * @d: pointing to struct dog to be free;
  *
  * Return: value is nothing.
