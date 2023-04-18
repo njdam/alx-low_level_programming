@@ -10,7 +10,7 @@
  * @age: our Second member;
  * @owner:  our Third member;
  *
- * Description: a "struct dog" that changed struct dog "my_dog".
+ * Description: a "struct dog" that changed to new type as new name "dog_t".
  */
 typedef struct dog
 {
@@ -18,8 +18,8 @@ typedef struct dog
 	float age;
 	char *owner;
 }
- /* my_dog - typedef for new dog struct dog; */
-my_dog;
+ /* dog_t - new type as new name for "struct dog"; */
+dog_t;
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
 
