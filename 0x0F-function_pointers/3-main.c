@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	if (oprt[1] != '\0' || (oprt[0] != '+' && oprt[0] != '-' &&
 			oprt[0] != '*' && oprt[0] != '/' &&
-			oprt[0] != '%') || get_op_func(oprt) == NULL)
+			oprt[0] != '%'))
 	{
 		printf("Error\n");
 		exit(99);
