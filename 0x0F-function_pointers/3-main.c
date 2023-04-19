@@ -9,7 +9,7 @@
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int a, b;
+	int num1, num2;
 	char *rdmas;
 
 	if (argc != 4)
@@ -18,9 +18,9 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 
-	a = atoi(argv[1]);
+	num1 = atoi(argv[1]);
 	rdmas = argv[2];
-	b = atoi(argv[3]);
+	num2 = atoi(argv[3]);
 
 	if (rdmas[1] != '\0' || get_op_func(rdmas) == NULL)
 	{
@@ -28,13 +28,13 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(99);
 	}
 
-	if ((*rdmas == '%' && b == 0) || (*rdmas == '/' && b == 0))
+	if ((*rdmas == '%' && num2 == 0) || (*rdmas == '/' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
-	printf("%d\n", get_op_func(rdmas)(a, b));
+	printf("%d\n", get_op_func(rdmas)(num1, num2));
 
 	return (0);
 }
