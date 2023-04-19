@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	}
 
 	array = (char *)main;
-	
+
 	x = 0;
 	while (x < (nbytes - 1))
 	{
