@@ -40,3 +40,23 @@ This message will be printed to the console before the main function is executed
 
 6. **Real programmers can write assembly code in any language:**
 Write a 64-bit program in assembly that prints Hello, Holberton, followed by a new line.
+
+**Code Explaination:**
+In the context of assembly language, db stands for "define byte". In this case, hello db 'Hello, Holberton!', 10, 0 defines a byte array named hello in the data section of the program.
+
+Each character in the string is represented by its ASCII code, which is an integer value between 0 and 127.
+
+Full forms of the abbreviations used in the code:
+
+rbp: The base pointer register
+rsp: The stack pointer register
+lea: Load effective address
+xor: Exclusive OR
+pop: Pop a value from the stack
+rdi: The first argument register
+ret: Return from a subroutine
+push: Push a value onto the stack
+eax: The accumulator register
+mov: Move a value between registers or memory locations
+
+**********End!!!**********
