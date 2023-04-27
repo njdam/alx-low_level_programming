@@ -2,7 +2,6 @@
 
 /**
  * print_list - a function to print all element of list_t list;
- * @list_t: is a data structure used to represent a node in linked list;
  * @h: is a poniter to the first node of singly linked list as head;
  *
  * Return: number of nodes in singly linked list.
