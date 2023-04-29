@@ -2,7 +2,7 @@
 
 /**
  * add_nodeint_end - for adding node at the end of a listint_t list;
- * head: a pointer to a head node of singly linked listint_t list;
+ * @head: a pointer to a head node of singly linked listint_t list;
  * @n: is constant integer in struct of listint_t list;
  *
  * Return: address of new element otherwise NULL;
