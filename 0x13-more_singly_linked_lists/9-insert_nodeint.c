@@ -29,7 +29,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	{
 		new_node->next = *head;
 		*head = new_node;
-		free(current);
 
 		return (new_node);
 	}
@@ -47,7 +46,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 			current = current->next;
 		i++;
 	}
-	free(new_node);
 
 	return (NULL);
 }
