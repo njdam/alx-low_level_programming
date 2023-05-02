@@ -9,7 +9,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int *mul, ln1, ln2, fln, x, z/*, num1, num2, res*/;
+	int *mul, ln1, ln2, fln, x, z = 0;
 	char *str1, *str2;
 
 	str1 = argv[1];
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
 	multi(ln1, ln2, str1, str2, mul);
 
-	x = 1;
+	x = 0;
 	while (x < fln - 1)
 	{
 		if (mul[x])
