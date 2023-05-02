@@ -14,28 +14,21 @@ Format of results will be: 1st line **result of multiplied 2 numbers** and 2nd l
 
 ***Then in working directory:***
 
-```
-./test 0
-```
+``./test 0``
 ```
 a number
 0
 ```
 
-```
-./test 1
-```
+
+``./test 1``
 ```
 Error
 98
 ```
 
-`./test 2`
-```
-Error
-98
-```
 
+``./test 2``
 ```
 Error
 98
@@ -47,16 +40,19 @@ Error
 ```
 
 ```
-./test 3
+Error
+98
 ```
+
+
+``./test 3``
 ```
 a number
 0
 ```
 
-```
-./test 4
-```
+
+``./test 4``
 ```
 a number
 0
