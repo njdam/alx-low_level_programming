@@ -36,9 +36,17 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 
 /************ ADVANCED ************/
+/* Qu.100: (11) Reverse list */
 listint_t *reverse_listint(listint_t **head);
+
+/** Qu.101: (12) Print (safe version) **/
 size_t print_listint_safe(const listint_t *head);
+size_t uniq_node_count(const listint_t *head);
+
+/*** Qu.102: (13) Free (safe version) ***/
 size_t free_listint_safe(listint_t **h);
+
+/**** Qu.103: (14) Find the loop ****/
 listint_t *find_listint_loop(listint_t *head);
 
 #endif /* LISTS_H */
