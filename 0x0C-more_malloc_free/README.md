@@ -15,27 +15,46 @@ Format of results will be: 1st line **result of multiplied 2 numbers** and 2nd l
 ***Then in working directory:***
 
 `./test 0`
+
 `a number`
+
 `0`
+
 
 `./test 1`
+
 `Error`
+
 `98`
+
 
 `./test 2`
+
 `Error`
+
 `98`
+
 `Error`
+
 `98`
+
 `Error`
+
 `98`
+
 
 `./test 3`
+
 `a number`
+
 `0`
 
+
 `./test 4`
+
 `a number`
+
 `0`
+
 
 **Note that:** If you got all correct output from `test` script means program `101-mul` works well and produce a correct output of multiplied two program command line arguments.
