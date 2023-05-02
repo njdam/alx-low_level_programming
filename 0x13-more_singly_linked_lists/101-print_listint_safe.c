@@ -49,7 +49,7 @@ size_t uniq_node_count(const listint_t *head)
 	const listint_t *y = (head->next)->next;
 	size_t counts = 0;
 
-	if (head == NULL || x == NULL)
+	if (head == NULL || head->next == NULL)
 		return (0);
 
 	counts++;
