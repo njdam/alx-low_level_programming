@@ -45,12 +45,14 @@ size_t print_listint_safe(const listint_t *head)
  */
 size_t uniq_node_count(const listint_t *head)
 {
-	const listint_t *x = head->next;
-	const listint_t *y = (head->next)->next;
+	const listint_t *x, *y;
 	size_t counts = 0;
 
 	if (head == NULL || head->next == NULL)
 		return (0);
+
+	x = head->next;
+	y = (head->next)->next;
 
 	counts++;
 	while (y)
@@ -71,8 +73,10 @@ size_t uniq_node_count(const listint_t *head)
 				counts++;
 				x = x->next;
 			}
+
 			return (counts);
 		}
+
 		x = x->next;
 		y = (y->next)->next;
 	}
