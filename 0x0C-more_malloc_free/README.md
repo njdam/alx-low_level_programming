@@ -56,5 +56,5 @@ a long number
 0
 ```
 
-
-<Note\that>: If you got all correct output from `test` script means program `101-mul` works well and produce a correct output of multiplied two program command line arguments.
+[good](https://github.com/njdam/alx-low_level_programming/blob/master/0x0C-more_malloc_free/test)
+**Note that**: If you got all correct output from `test` script means program `101-mul` works well and produce a correct output of multiplied two program command line arguments.
