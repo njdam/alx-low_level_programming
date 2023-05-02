@@ -16,7 +16,7 @@ Format of results will be: 1st line **result of multiplied 2 numbers** and 2nd l
 
 ``./test 0``
 ```
-a number
+a long number
 0
 ```
 
@@ -32,14 +32,8 @@ Error
 ```
 Error
 98
-```
-
-```
 Error
 98
-```
-
-```
 Error
 98
 ```
@@ -47,16 +41,20 @@ Error
 
 ``./test 3``
 ```
-a number
+0
+0
+0
+0
+0
 0
 ```
 
 
 ``./test 4``
 ```
-a number
+a long number
 0
 ```
 
 
-**Note that:** If you got all correct output from `test` script means program `101-mul` works well and produce a correct output of multiplied two program command line arguments.
+<Note\that>: If you got all correct output from `test` script means program `101-mul` works well and produce a correct output of multiplied two program command line arguments.
