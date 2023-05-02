@@ -1,4 +1,5 @@
 ***INTRODUCTION***
+
 A singly linked list is a type of data structure used in computer science to store a sequence of elements, such as integers or strings. In a singly linked list, each element is stored in a node that contains two parts: a value and a pointer to the next node in the sequence. The first node in the list is called the head, and the last node points to NULL to indicate the end of the list.
 
 This type of linked list is called "singly" because each node has only one pointer, which points to the next node in the sequence. 
@@ -7,6 +8,7 @@ This makes singly linked lists easy to implement and efficient for many operatio
 Learning more about singly linked lists as our selection from other data structure by answering the following questions.
 
 **MANDATORY QUESTION**
+
 0. Print list
 Write a function that prints all the elements of a listint_t list.
 
@@ -53,21 +55,22 @@ Finally, the function returns a pointer to the new node to indicate that the ins
 
 10. Delete at index
 Write a function that deletes the node at index index of a listint_t linked list.
-*code explaination:*
+**code explaination:**
 This code is used to delete the node after the current node in a singly linked list. Here is a detailed explanation of each line of code:
-tmp = current->next;
+**tmp = current->next;**
 This line creates a temporary pointer tmp that points to the node that comes after the current node (current).
 We need to create this temporary pointer so that we can free the memory allocated for the node that we are deleting.
 
-current->next = tmp->next;
+**current->next = tmp->next;**
 This line updates the next pointer of the current node to skip over the node that we are deleting (i.e., the node that tmp points to). This effectively removes the node from the linked list.
 
-free(tmp);
+**free(tmp);**
 This line frees the memory allocated for the node that we are deleting. We no longer need this node since we have removed it from the list.
 
-Overall, this code effectively deletes the node that comes after the current node, and updates the next pointer of the current node to maintain the integrity of the linked list. Note that this code assumes that the current node is not the last node in the list (i.e., it has a non-NULL next pointer). If the current node is the last node, then we cannot delete any node after it.
+**Overall**, this code effectively deletes the node that comes after the current node, and updates the next pointer of the current node to maintain the integrity of the linked list. Note that this code assumes that the current node is not the last node in the list (i.e., it has a non-NULL next pointer). If the current node is the last node, then we cannot delete any node after it.
 
 **ADVANCED QUESTIONS**
+
 11. Reverse list
 Write a function that reverses a listint_t linked list.
 
@@ -82,6 +85,7 @@ Once the loop has finished, `*head` is set to point to ``previous``, which is no
 Write a function that prints a listint_t linked list.
 
 ***code explaination:***
+
 **In function:** ***uniq_node_count***
 This function counts the **number of unique nodes** in a looped linked list. It takes a pointer to the head of the linked list as its argument and returns the number of **unique nodes** in the list. The function uses the ***Floyd's cycle-finding algorithm***, also known as the "**tortoise and hare**" *algorithm*, to detect the presence of a loop in the list. If a loop is detected, it determines the length of the loop by counting the number of nodes in the loop. If there is no loop in the list, the function returns 0.
 
@@ -102,6 +106,7 @@ The function takes a pointer to a pointer of the head of the list as its paramet
 Write a function that finds the loop in a linked list.
 
 ***code explaination:***
+
 To find the loop in a linked list, we can use the ***Floyd's cycle-finding algorithm***, also known as the "**tortoise and hare**" *algorithm*. This algorithm uses two pointers, one moving one step at a time (**tortoise** as **x** in a code) and the other moving two steps at a time (**hare** as **y** in a code). If there is a loop in the list, the hare will eventually catch up to the tortoise, and they will meet at a node inside the loop.
 
 Once the hare and tortoise meet, we can move one of the pointers (as **x** in a code) back to the head of the list and start moving both pointers one step at a time until they meet again. The node where they meet is the start of the loop.
