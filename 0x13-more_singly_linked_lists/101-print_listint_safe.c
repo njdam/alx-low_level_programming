@@ -11,6 +11,9 @@ size_t print_listint_safe(const listint_t *head)
 	size_t num_nodes = uniq_node_count(head);
 	size_t idx = 0;
 
+	if (head == NULL)
+		exit(98);
+
 	if (num_nodes == 0)
 	{
 		while (head != NULL)
@@ -30,7 +33,7 @@ size_t print_listint_safe(const listint_t *head)
 			idx++;
 		}
 
-		printf("->[%p] %d\n", (void *)head, head->n);
+		printf("-> [%p] %d\n", (void *)head, head->n);
 	}
 
 	return (num_nodes);
