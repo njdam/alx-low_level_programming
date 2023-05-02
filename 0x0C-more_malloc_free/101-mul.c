@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -10,31 +9,26 @@
  */
 int main(int argc, char *argv[])
 {
-	int *mul, ln1, ln2, fln, x, z;
+	int *mul, ln1, ln2, fln, x, z/*, num1, num2, res*/;
 	char *str1, *str2;
 
-	str1 = argv[1], str2 = argv[2];
-	if (argc != 3 || !isitdigit(str1) || !isitdigit(str2))
-	{
-		printf("Error\n");
-		exit(98);
-	}
+	str1 = argv[1];
+	str2 = argv[2];
+	if (argc != 3 || !_isdigit(str1) || !_isdigit(str2))
+		error_msg();
 
-	ln1 = strln(str1), ln2 = strln(str2);
-	fln = ln1 + ln2;
+	ln1 = strln(str1);
+	ln2 = strln(str2);
+	fln = ln1 + ln2 + 1;
+
 	mul = malloc(fln * sizeof(int));
 	if (mul == NULL)
 		return (1);
-	x = 0;
-	while (x < fln)
-	{
-		mul[x] = 0;
-		x++;
-	}
+
 	multi(ln1, ln2, str1, str2, mul);
 
 	x = 1;
-	while (x < fln)
+	while (x < fln - 1)
 	{
 		if (mul[x])
 			z = 1;
@@ -51,17 +45,26 @@ int main(int argc, char *argv[])
 }
 
 /**
- * isitdigit - my function to check is it is a digit;
+ * error_msg - to handle errors for main function;
+ */
+void error_msg(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+
+/**
+ * _isdigit - my function to check is it is a digit;
  * @str: string to be used for checking it's elements;
  *
  * Return: value 1 for true otherwise value 0 for false.
  */
-int isitdigit(char *str)
+int _isdigit(char *str)
 {
 	int x;
 
 	x = 0;
-	while (str[x] < 48 && str[x] > 57)
+	while (str[x] < 48 || str[x] > 57)
 	{
 		return (0);
 		x++;
@@ -99,24 +102,30 @@ int strln(char *str)
  */
 int *multi(int ln1, int ln2, char *str1, char *str2, int *mul)
 {
-	int num1, num2, res;
-	int x, y;
+	int num1, num2, res, x;
 
-	x = ln1 - 1;
-	while (x >= 0)
+	x = 0;
+	while (x <= (ln1 + ln2))
 	{
-		num1 = str1[x] - '0';
+		mul[x] = 0;
+		x++;
+	}
+
+	ln1 = ln1 - 1;
+	while (ln1 >= 0)
+	{
+		num1 = str1[ln1] - '0';
 		res = 0;
-		for (y = ln2 - 1; y >= 0; y--)
+		for (ln2 = strln(str2) - 1; ln2 >= 0; ln2--)
 		{
-			num2 = str2[y] - '0';
-			res += mul[x + y + 1] + (num1 * num2);
-			mul[x + y + 1] = res % 10;
+			num2 = str2[ln2] - '0';
+			res += mul[ln1 + ln2 + 1] + (num1 * num2);
+			mul[ln1 + ln2 + 1] = res % 10;
 			res /= 10;
 		}
 		if (res > 0)
-			mul[x + y + 1] += res;
-		x--;
+			mul[ln1 + ln2 + 1] += res;
+		ln1--;
 	}
 
 	return (mul);
