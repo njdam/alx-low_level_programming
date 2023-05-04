@@ -17,4 +17,7 @@ int clear_bit(unsigned long int *n, unsigned int index);
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int get_endianness(void);
 
+/* Extra Prototype */
+unsigned int power(unsigned int x, int y);
+
 #endif /* MAIN_H */
