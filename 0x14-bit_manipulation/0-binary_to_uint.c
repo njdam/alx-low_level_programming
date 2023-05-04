@@ -4,7 +4,7 @@
  * binary_to_uint - a function to convert a binary number to an unsigned int;
  * @b: is a pointing string containing binary number (0 and 1 chars);
  *
- * Return: resulting unsigned int otherwise 0 for @b if is "NULL" or is not 0 or 1.
+ * Return: results otherwise 0 for @b if is "NULL" or is not 0 or 1.
  */
 unsigned int binary_to_uint(const char *b)
 {
@@ -43,7 +43,7 @@ unsigned int binary_to_uint(const char *b)
 unsigned int power(unsigned int x, int y)
 {
 	int i;
-	unsigned res = 0;
+	unsigned int res = 0;
 
 	i = 0;
 	while (i <= y)
