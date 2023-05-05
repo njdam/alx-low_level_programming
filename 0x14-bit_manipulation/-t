@@ -1,3 +1,0 @@
-__libc_start_main(0x400675, 1, 0x7ffc83e0a798, 0x4006f0 <unfinished ...>
-fprintf(0x7f2d3fccc5c0, "Usage: %s password\n", "./crackme3") = 27
-+++ exited (status 1) +++
