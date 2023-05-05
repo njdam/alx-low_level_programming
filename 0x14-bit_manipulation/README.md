@@ -41,3 +41,10 @@ All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options
 
 `Task 7. Crackme3:` Find the password for [this program](https://github.com/holbertonschool/0x13.c).
 
+First of you have to use `gdb crackme3` to crack password.
+If you got real password **there is something required to be done**in termial such as: `echo "password" > 101-paswword` after use `cat > 101-password` then `Enter`
+After Type `password` plus `^D` and again Press and hold control plus D (Ctrl + D or ^D).
+after this check code by `./crackme3 `cat 101-password`` to get congratulation! if not, create 101-password by the scrip below in answer.
+
+[Answer](https://raw.githubusercontent.com/osala-eng/alx_tools/master/crackme3.sh)
+___________________________________END!!!_________________________________________
