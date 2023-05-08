@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 	}
 	src = open(argv[1], O_RDONLY);
 	rd = read(src, buffer, BUFSZ);
+	dest = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (rd > 0)
 	{
 	if (src == -1 || rd == -1)
@@ -34,7 +35,6 @@ int main(int argc, char *argv[])
 		free(buffer);
 		exit(98);
 	}
-	dest = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	wr = write(dest, buffer, BUFSZ);
 	if (dest == -1 || wr == -1)
 	{
@@ -46,8 +46,25 @@ int main(int argc, char *argv[])
 	dest = open(argv[2], O_WRONLY | O_APPEND);
 	}
 	free(buffer);
-	close(src);
-	close(dest);
+	fl_close(src);
+	fl_close(dest);
 
 	return (0);
+}
+
+/**
+ * fl_close - a function to close a file descripter;
+ * @fd: is file descriptor to be used;
+ *
+ * Return: is nothing.
+ */
+void fl_close(int fd)
+{
+	int cl = close(fd);
+
+	if (cl == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 }

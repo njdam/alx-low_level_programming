@@ -14,5 +14,6 @@ int append_text_to_file(const char *filename, char *text_content);
 
 /* Other Prototype */
 int _putchar(char c);
+void fl_close(int fd);
 
 #endif /* MAIN_H */
