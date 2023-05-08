@@ -10,12 +10,11 @@
 int create_file(const char *filename, char *text_content)
 {
 	int wr, fd, strln = 0;
-	mode_t mode1 = O_CREAT | O_RDWR | O_TRUNC;
 
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, mode1, 0600);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	/* `S_IRUSR | S_IWUSR` or `0600` in octal notation */
 	if (fd == -1)
 		return (-1);
