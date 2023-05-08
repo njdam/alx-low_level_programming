@@ -11,7 +11,7 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer = malloc(BUFSZ * sizeof(char));
+	char *buffer;
 	int src, rd, wr, dest;
 
 	if (argc != 3)
@@ -19,9 +19,10 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
+	buffer = malloc(BUFSZ * sizeof(char));
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	src = open(argv[1], O_RDONLY);
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
 	{
 	if (src == -1 || rd == -1)
 	{
-		dprintf(STDERR_FILENO, "Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		free(buffer);
 		exit(98);
 	}
