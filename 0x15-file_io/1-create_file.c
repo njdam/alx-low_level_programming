@@ -9,14 +9,14 @@
  */
 int create_file(const char *filename, char *text_content)
 {
+	mode_t mode1 = O_CREAT | O_RDWR | O_TRUNC;
+	mode_t mode2 = S_IRUSR | S_IWUSR/* or `0600` in octal notation */;
 	int wr, fd, strln = 0;
 
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	/* `S_IRUSR | S_IWUSR` or `0600` in octal notation */
-
+	fd = open(filename, mode1, mode2);
 	if (fd == -1)
 		return (-1);
 
