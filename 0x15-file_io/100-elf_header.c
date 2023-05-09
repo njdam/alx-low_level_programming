@@ -63,8 +63,10 @@ void elf_check(unsigned char *el_id)
 
 	for (idx = 0; idx < 4; idx++)
 	{
-		if (el_id[idx] != 127 && el_id[idx] != 'E' &&
-				el_id[idx] != 'L' && el_id[idx] != 'F')
+		if (el_id[idx] != 127 &&
+				el_id[idx] != 'E' &&
+				el_id[idx] != 'L' &&
+				el_id[idx] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -84,14 +86,13 @@ void magic_print(unsigned char *el_id)
 
 	printf(" Magic: ");
 
-	while (index < EI_NIDENT)
+	for (; index < EI_NIDENT; index++)
 	{
 		printf("%02x", el_id[index]);
 		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
-		index++;
 	}
 }
 
@@ -103,7 +104,7 @@ void magic_print(unsigned char *el_id)
  */
 void class_print(unsigned char *el_id)
 {
-	printf(" Class: ");
+	printf("  Class:                             ");
 
 	switch (el_id[EI_CLASS])
 	{
@@ -117,7 +118,8 @@ void class_print(unsigned char *el_id)
 		printf("ELF64\n");
 		break;
 	default:
-		printf("<unknown: %x>\n", el_id[EI_CLASS]);
+		printf("<unknown: %x>\n",
+				el_id[EI_CLASS]);
 	}
 }
 
@@ -129,7 +131,7 @@ void class_print(unsigned char *el_id)
  */
 void data_print(unsigned char *el_id)
 {
-	printf(" Data: ");
+	printf("  Data:                              ");
 
 	switch (el_id[EI_DATA])
 	{
@@ -143,7 +145,8 @@ void data_print(unsigned char *el_id)
 		printf("2's complement, big endian\n");
 		break;
 	default:
-		printf("<unknown: %x>\n", el_id[EI_CLASS]);
+		printf("<unknown: %x>\n",
+				el_id[EI_CLASS]);
 	}
 }
 
@@ -155,7 +158,8 @@ void data_print(unsigned char *el_id)
  */
 void version_print(unsigned char *el_id)
 {
-	 printf(" Version: %d", el_id[EI_VERSION]);
+	printf("  Version:                           %d",
+			el_id[EI_VERSION]);
 
 	switch (el_id[EI_VERSION])
 	{
@@ -176,7 +180,7 @@ void version_print(unsigned char *el_id)
  */
 void osabi_print(unsigned char *el_id)
 {
-	printf(" OS/ABI: ");
+	printf("  OS/ABI:                            ");
 
 	switch (el_id[EI_OSABI])
 	{
@@ -211,7 +215,8 @@ void osabi_print(unsigned char *el_id)
 		printf("Standalone App\n");
 		break;
 	default:
-		printf("<unknown: %x>\n", el_id[EI_OSABI]);
+		printf("<unknown: %x>\n",
+				el_id[EI_OSABI]);
 	}
 }
 
@@ -223,7 +228,8 @@ void osabi_print(unsigned char *el_id)
  */
 void abi_print(unsigned char *el_id)
 {
-	printf(" ABI Version: %d\n", el_id[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n",
+			el_id[EI_ABIVERSION]);
 }
 
 /**
@@ -238,7 +244,7 @@ void type_print(unsigned int el_type, unsigned char *el_id)
 	if (el_id[EI_DATA] == ELFDATA2MSB)
 		el_type >>= 8;
 
-	printf(" Type: ");
+	printf("  Type:                              ");
 
 	switch (el_type)
 	{
@@ -271,7 +277,7 @@ void type_print(unsigned int el_type, unsigned char *el_id)
  */
 void entry_print(unsigned long int el_entry, unsigned char *el_id)
 {
-	printf(" Entry point address: ");
+	printf("  Entry point address:               ");
 
 	if (el_id[EI_DATA] == ELFDATA2MSB)
 	{
@@ -294,9 +300,12 @@ void entry_print(unsigned long int el_entry, unsigned char *el_id)
  */
 void elf_close(int elf)
 {
-	if (close(elf) == -1)
+	int cl = close(elf);
+
+	if (cl == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
+		dprintf(STDERR_FILENO,
+				"Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
