@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * check_elf - a function to check if a file is an ELF file;
+ * elf_check - a function to check if a file is an ELF file;
  * @el_id: is a pointer to an array of ELF magic numbers;
  *
  * Return: is nothing but exit code is 98 on file not ELF.
