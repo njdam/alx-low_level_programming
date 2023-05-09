@@ -1,6 +1,57 @@
 #include "main.h"
 
 /**
+ * main - is a function to display information from an ELF header;
+ * @argc: is number of program command line arguments;.
+ * @argv: is an array of pointers to program command line arguments;
+ *
+ * Return: value 0 for success;
+ * Error, print Error msg and exit with code 98.
+ */
+int main(int __attribute__((__unused__)) argc, char *argv[])
+{
+	Elf64_Ehdr *header;
+	int fd, rd;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	header = malloc(sizeof(Elf64_Ehdr));
+	if (header == NULL)
+	{
+		elf_close(fd);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	rd = read(fd, header, sizeof(Elf64_Ehdr));
+	if (rd == -1)
+	{
+		free(header);
+		elf_close(fd);
+		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
+		exit(98);
+	}
+
+	elf_check(header->e_ident);
+	printf("ELF Header:\n");
+	magic_print(header->e_ident);
+	class_print(header->e_ident);
+	data_print(header->e_ident);
+	version_print(header->e_ident);
+	osabi_print(header->e_ident);
+	abi_print(header->e_ident);
+	type_print(header->e_type, header->e_ident);
+	entry_print(header->e_entry, header->e_ident);
+	free(header);
+	elf_close(fd);
+
+	return (0);
+}
+
+/**
  * elf_check - a function to check if a file is an ELF file;
  * @el_id: is a pointer to an array of ELF magic numbers;
  *
@@ -194,23 +245,18 @@ void type_print(unsigned int el_type, unsigned char *el_id)
 	case ET_NONE:
 		printf("NONE (None)\n");
 		break;
-
 	case ET_REL:
 		printf("REL (Relocatable file)\n");
 		break;
-
 	case ET_EXEC:
 		printf("EXEC (Executable file)\n");
 		break;
-
 	case ET_DYN:
 		printf("DYN (Shared object file)\n");
 		break;
-
 	case ET_CORE:
 		printf("CORE (Core file)\n");
 		break;
-
 	default:
 		printf("<unknown: %x>\n", el_type);
 	}
@@ -236,7 +282,6 @@ void entry_print(unsigned long int el_entry, unsigned char *el_id)
 
 	if (el_id[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)el_entry);
-
 	else
 		printf("%#lx\n", el_entry);
 }
@@ -254,55 +299,4 @@ void elf_close(int elf)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
-}
-
-/**
- * main - is a function to display information from an ELF header;
- * @argc: is number of program command line arguments;.
- * @argv: is an array of pointers to program command line arguments;
- *
- * Return: value 0 for success;
- * Error, print Error msg and exit with code 98.
- */
-int main(int __attribute__((__unused__)) argc, char *argv[])
-{
-	Elf64_Ehdr *header;
-	int fd, rd;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
-		exit(98);
-	}
-	header = malloc(sizeof(Elf64_Ehdr));
-	if (header == NULL)
-	{
-		elf_close(fd);
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
-		exit(98);
-	}
-	rd = read(fd, header, sizeof(Elf64_Ehdr));
-	if (rd == -1)
-	{
-		free(header);
-		elf_close(fd);
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
-		exit(98);
-	}
-
-	elf_check(header->e_ident);
-	printf("ELF Header:\n");
-	magic_print(header->e_ident);
-	class_print(header->e_ident);
-	data_print(header->e_ident);
-	version_print(header->e_ident);
-	osabi_print(header->e_ident);
-	abi_print(header->e_ident);
-	type_print(header->e_type, header->e_ident);
-	entry_print(header->e_entry, header->e_ident);
-
-	free(header);
-	elf_close(fd);
-	return (0);
 }
