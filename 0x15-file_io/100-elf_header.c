@@ -1,4 +1,21 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <elf.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+void elf_check(unsigned char *el_id);
+void magic_print(unsigned char *el_id);
+void class_print(unsigned char *el_id);
+void data_print(unsigned char *el_id);
+void version_print(unsigned char *el_id);
+void osabi_print(unsigned char *el_id);
+void abi_print(unsigned char *el_id);
+void type_print(unsigned int el_type, unsigned char *el_id);
+void entry_print(unsigned long int el_entry, unsigned char *el_id);
+void elf_close(int elf);
 
 /**
  * main - is a function to display information from an ELF header;
@@ -118,8 +135,7 @@ void class_print(unsigned char *el_id)
 		printf("ELF64\n");
 		break;
 	default:
-		printf("<unknown: %x>\n",
-				el_id[EI_CLASS]);
+		printf("<unknown: %x>\n", el_id[EI_CLASS]);
 	}
 }
 
@@ -145,8 +161,7 @@ void data_print(unsigned char *el_id)
 		printf("2's complement, big endian\n");
 		break;
 	default:
-		printf("<unknown: %x>\n",
-				el_id[EI_CLASS]);
+		printf("<unknown: %x>\n", el_id[EI_CLASS]);
 	}
 }
 
@@ -215,8 +230,7 @@ void osabi_print(unsigned char *el_id)
 		printf("Standalone App\n");
 		break;
 	default:
-		printf("<unknown: %x>\n",
-				el_id[EI_OSABI]);
+		printf("<unknown: %x>\n", el_id[EI_OSABI]);
 	}
 }
 
@@ -304,8 +318,7 @@ void elf_close(int elf)
 
 	if (cl == -1)
 	{
-		dprintf(STDERR_FILENO,
-				"Error: Can't close fd %d\n", elf);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
