@@ -27,8 +27,7 @@ int main(int argc, char *argv[])
 	do {
 		if (src == -1 || rd == -1)
 		{
-			dprintf(STDERR_FILENO,
-					"Error: Can't read from file %s\n", argv[1]);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
@@ -36,8 +35,7 @@ int main(int argc, char *argv[])
 		wr = write(dest, buffer, rd);
 		if (dest == -1 || wr == -1)
 		{
-			dprintf(STDERR_FILENO,
-					"Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
@@ -82,8 +80,7 @@ char *make_buffer(char *contents)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", contents);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", contents);
 		exit(99);
 	}
 
