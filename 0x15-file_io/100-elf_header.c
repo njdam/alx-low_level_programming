@@ -1,21 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <elf.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-
-void elf_check(unsigned char *el_id);
-void magic_print(unsigned char *el_id);
-void class_print(unsigned char *el_id);
-void data_print(unsigned char *el_id);
-void version_print(unsigned char *el_id);
-void osabi_print(unsigned char *el_id);
-void abi_print(unsigned char *el_id);
-void type_print(unsigned int el_type, unsigned char *el_id);
-void entry_print(unsigned long int el_entry, unsigned char *el_id);
-void elf_close(int elf);
+#include "main.h"
 
 /**
  * main - is a function to display information from an ELF header;
