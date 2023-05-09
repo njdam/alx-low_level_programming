@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define SIZE 1024
+
 /* Standard Libraries */
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +20,7 @@ int append_text_to_file(const char *filename, char *text_content);
 /* Other Prototype */
 int _putchar(char c);
 void fl_close(int fd);
+char *make_buffer(char *contents);
 void elf_check(unsigned char *el_id);
 void magic_print(unsigned char *el_id);
 void class_print(unsigned char *el_id);

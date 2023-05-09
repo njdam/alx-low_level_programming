@@ -10,40 +10,41 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer;
 	int src, rd, wr, dest;
+	char *buffer;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buffer = malloc(1024 * sizeof(char));
-	if (buffer == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+
+	buffer = make_buffer(argv[2]);
 	src = open(argv[1], O_RDONLY);
-	rd = read(src, buffer, 1024);
+	rd = read(src, buffer, SIZE);
 	dest = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+
 	do {
 		if (src == -1 || rd == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			dprintf(STDERR_FILENO,
+					"Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
-		wr = write(dest, buffer, 1024);
+
+		wr = write(dest, buffer, rd);
 		if (dest == -1 || wr == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO,
+					"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
-		rd = read(src, buffer, 1024);
+		rd = read(src, buffer, SIZE);
 		dest = open(argv[2], O_WRONLY | O_APPEND);
 	} while (rd > 0);
+
 	free(buffer);
 	fl_close(src);
 	fl_close(dest);
@@ -67,4 +68,24 @@ void fl_close(int fd)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
+}
+
+/**
+ * make_buffer - a function to close a file descripter;
+ * @contents: is file's contents from argument;
+ *
+ * Return: is nothing.
+ */
+char *make_buffer(char *contents)
+{
+	char *buffer = malloc(SIZE * sizeof(char));
+
+	if (buffer == NULL)
+	{
+		dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", contents);
+		exit(99);
+	}
+
+	return (buffer);
 }
