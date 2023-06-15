@@ -10,61 +10,38 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int i = 0, nlen;
-	dlistint_t *current = *h;
-	dlistint_t *new_node = malloc(sizeof(dlistint_t));
+	unsigned int i = 0;
+	dlistint_t *current = *h, *new_node;
 
-	if (!new_node)
+	if (h == NULL)
 		return (NULL);
-	new_node->n = n;
-
-	nlen = dlistint_len(*h);
-	if ((!(*h) && idx != 0) || (idx > nlen))
-	{
-		free(new_node);
-		return (NULL);
-	}
 
 	if (idx == 0)
-	{/* To insert new node at the beginning */
-		new_node->prev = NULL;
-		/* If head is NULL, new_node->next = NULL */
-		new_node->next = *h;
-		if (*h)
-			(*h)->prev = new_node;
-		*h = new_node;
+		return (add_dnodeint(h, n));
 
-		return (new_node);
-	}
-
-	while (i < idx - 1) /* If idx > 1 & if idx = 1 will skip this loop*/
+	while (i < idx - 1) /* If idx == 1 will skip this loop */
 	{
-		i++;
+		if (!current)
+			return (NULL);
 		current = current->next;
+		i++;
 	}
 
+	if (!current)
+		return (NULL);
+
+	if (current->next == NULL)
+		return (add_dnodeint_end(h, n));
+
+	new_node = malloc(sizeof(dlistint_t));
+	if (!new_node)
+		return (NULL);
+
+	new_node->n = n;
 	new_node->next = current->next;
-	current->next = new_node;
 	new_node->prev = current;
+	current->next->prev = new_node;
+	current->next = new_node;
 
 	return (new_node);
-}
-
-/**
- * dlistint_len - a func to return number of elements in doubly list;
- * @h: is a head node of doubly linked list;
- *
- * Return: value equal to a number of elements in doubly linked list.
- */
-size_t dlistint_len(const dlistint_t *h)
-{
-	ssize_t n_node = 0;
-
-	while (h)
-	{
-		n_node++;
-		h = h->next;
-	}
-
-	return (n_node);
 }
