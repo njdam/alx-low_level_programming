@@ -16,22 +16,32 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	if (!new_node)
 		return (NULL);
+	new_node->n = n;
 
 	nlen = dlistint_len(*h);
-	if (idx > nlen)
+	if ((!(*h) && idx != 0) || (idx > nlen))
 	{
 		free(new_node);
 		return (NULL);
 	}
 
-	new_node->n = n;
+	if (idx == 0)
+	{
+		new_node->prev = NULL;
+		*h = new_node;
+		/* If head is NULL, list will end here else will be added */
+		new_node->next = current;
 
-	while (i < idx - 1)
+		return (new_node);
+	}
+
+	while (i < idx - 1) /* If idx > 1 & if idx = 1 will skip this loop*/
 	{
 		i++;
 		current = current->next;
 	}
 
+	/* This also will work if is NULL */
 	new_node->next = current->next;
 	current->next = new_node;
 	new_node->prev = current;
