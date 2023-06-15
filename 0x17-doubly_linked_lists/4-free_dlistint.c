@@ -18,6 +18,4 @@ void free_dlistint(dlistint_t *head)
 
 		current = temp;
 	}
-
-	free(temp);
 }
