@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * insert_dnodeint_at_index - is a functiom to add new node at index in a list;
+ * insert_dnodeint_at_index - is a func to insert new node at index in ln list;
  * @h: is a head node of doubly linked list;
  * @idx: is a given index where to add new node in dlistint_t list;
  * @n: is element of a new node to be added at index in dlistint_t list;
