@@ -71,3 +71,8 @@ a. **Compile Time**: here we need to tell the linker to scan the shared library 
 
 b. **Run Time**: when we run the program, we need to tell the system's dynamic loader (the process in charge of automatically loading and linking shared libraries into the running process) where to find our shared library.
 
+## Referances
+
+1. [All About Libraries in C Programming](https://betascribbles.hashnode.dev/all-about-libraries-in-c-programming#heading-dynamicshared-libraries)
+
+2. [ChatGPT](https://chat.openai.com/)
