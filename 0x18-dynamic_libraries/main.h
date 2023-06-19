@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*** MANDATORY TASK'S PROTOTYPES ***/
 int _putchar(char c);
 int _islower(int c);
 int _isalpha(int c);
@@ -25,5 +26,9 @@ char *_strchr(char *s, char c);
 unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
+
+/*** ADVANCED TASK'S PROTOTYES WITH PYTHON3 ***/
+
+/* In my header called cal.h */
 
 #endif /* MAIN_H */
