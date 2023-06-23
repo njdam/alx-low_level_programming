@@ -1,3 +1,3 @@
 #!/bin/bash
-export LD_PRELOAD=/$PWD/libmk_me_win.so
+export LD_PRELOAD=/$PWD/libmyrand.so
 ./gm 9 8 10 24 75 9
