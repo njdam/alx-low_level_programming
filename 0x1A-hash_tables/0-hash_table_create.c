@@ -8,22 +8,21 @@
  */
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	hash_table_t *ht;
+	hash_table_t *table;
 
 	if (size == 0)
 		return (NULL);
 
-	ht = calloc(1, sizeof(hash_table_t));
-	if (!ht)
+	table = calloc(1, sizeof(hash_table_t));
+	if (table == NULL)
 		return (NULL);
 
-	ht->size = size;
-	ht->array = calloc(size, sizeof(hash_node_t *));
-	if (!(ht->array))
+	table->size = size;
+	table->array = calloc(size, sizeof(hash_node_t *));
+	if (table->array == NULL)
 	{
-		free(ht);
+		free(table);
 		return (NULL);
 	}
-
-	return (ht);
+	return (table);
 }
