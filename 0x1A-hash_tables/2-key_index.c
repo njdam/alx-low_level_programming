@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * key_index - a function to store key/value in hash tables array;
+ * key_index - a function to return index where key/value stored in hashtb;
  * @key: is a key to be hash;
  * @size: is a size of hash table array;
  *
