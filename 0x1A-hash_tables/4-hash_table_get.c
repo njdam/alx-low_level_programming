@@ -17,7 +17,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 
 	index = hash_djb2((unsigned char *)key) % ht->size;
-	if (index >= ht->size )
+	if (index >= ht->size)
 		return (NULL);
 
 	current = ht->array[index]; /* Assigning head node at index */
