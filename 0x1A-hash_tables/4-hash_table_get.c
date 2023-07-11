@@ -10,10 +10,14 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	char *value = NULL;
-	unsigned char *key_code = (unsigned char *)key;
-	unsigned long int index = hash_djb2(key_code) % ht->size;
-	hash_node_t *current = ht->array[index]; /* Assigning head node at index */
+	unsigned long int index;
+	hash_node_t *current;
 
+	index = hash_djb2((unsigned char *)key) % ht->size;
+	if (index >= ht->size)
+		return (NULL);
+
+	current = ht->array[index]; /* Assigning head node at index */
 	if (current == NULL)
 		return (NULL);
 
