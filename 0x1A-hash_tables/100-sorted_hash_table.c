@@ -53,11 +53,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	shash_node_t *new_node, *temp;
 	char *valueCp;
 
-	if (value == NULL || ht == NULL || key == NULL || *key == '\0')
+	if (!value || !ht || !key || !(*key))
 		return (0);
+
 	valueCp = strdup(value);
-	if (valueCp == NULL)
+	if (!valueCp)
 		return (0);
+
 	index = key_index((const unsigned char *)key, ht->size);
 	temp = ht->shead;
 	while (temp)
@@ -70,12 +72,14 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 		temp = temp->snext;
 	}
+
 	new_node = malloc(sizeof(shash_node_t));
-	if (new_node == NULL)
+	if (!new_node)
 	{
 		free(valueCp);
 		return (0);
 	}
+
 	new_node->key = strdup(key);
 	if (new_node->key == NULL)
 	{
@@ -83,6 +87,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		free(new_node);
 		return (0);
 	}
+
 	new_node->value = valueCp;
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
@@ -104,7 +109,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		temp = ht->shead;
-		while (temp->snext != NULL && strcmp(temp->snext->key, key) < 0)
+		while (temp->snext && strcmp(temp->snext->key, key) < 0)
 			temp = temp->snext;
 		new_node->sprev = temp;
 		new_node->snext = temp->snext;
@@ -130,7 +135,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	unsigned long int index;
 	shash_node_t *current;
 
-	if (ht == NULL || key == NULL || *key == '\0')
+	if (!ht || !key || !(*key))
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, ht->size);
@@ -138,10 +143,10 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 		return (NULL);
 
 	current = ht->shead;
-	while (current != NULL && strcmp(current->key, key) != 0)
+	while (current && strcmp(current->key, key) != 0)
 		current = current->snext;
 
-	return ((current == NULL) ? NULL : current->value);
+	return ((!current) ? NULL : current->value);
 }
 
 /**
@@ -163,7 +168,7 @@ void shash_table_print(const shash_table_t *ht)
 	{
 		printf("'%s': '%s'", current->key, current->value);
 		current = current->snext;
-		if (current != NULL)
+		if (current)
 			printf(", ");
 	}
 	printf("}\n");
@@ -188,7 +193,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 	{
 		printf("'%s': '%s'", current->key, current->value);
 		current = current->sprev;
-		if (current != NULL)
+		if (current)
 			printf(", ");
 	}
 	printf("}\n");
