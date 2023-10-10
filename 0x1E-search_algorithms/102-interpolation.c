@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * interpolation_search - a func to search value by Interpolation search algorithm
+ * interpolation_search - to search a value by Interpolation search algorithm
  * @array: is an array of integers
  * @size: is a number of elements in array
  * @value: is a value to search for
