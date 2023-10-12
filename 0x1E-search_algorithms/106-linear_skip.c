@@ -10,7 +10,7 @@
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	size_t idx1, idx2;
+	size_t idx1 = 0, idx2 = 0;
 	skiplist_t *current, *express;
 
 	if (!list)
@@ -18,9 +18,10 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 
 	current = list;
 	express = current->express ? current->express : current;
+
 	while (express)
 	{
-		printf("Value checked at index [%lu] = [%d]", express->index, express->n);
+		printf("Value checked at index [%lu] = [%d]\n", express->index, express->n);
 		/* If express to n is greater than or equal to value break to found region */
 		if (express->n >= value)
 			break;
